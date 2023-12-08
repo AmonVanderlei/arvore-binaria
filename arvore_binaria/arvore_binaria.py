@@ -192,7 +192,7 @@ class ArvoreBinaria:
         
         #Se for vazio, coloca a mesma quantidade de elementos que a árvore.
         if tree_arr == []:
-            tree_arr = ["-"]*self.n_elementos
+            tree_arr = [np.NAN]*self.n_elementos
         
         #Adiciona o valor na posição correta do array.
         tree_arr[i] = self.valor
@@ -202,10 +202,6 @@ class ArvoreBinaria:
             self.esquerda.to_array(tree_arr, (2*i)+1)
         if self.direita != []:
             self.direita.to_array(tree_arr, (2*i)+2)
-        
-        #Para evitar IndexError, o array é criado com o n_elementos. Como as
-        #   sub-árvores são menores, retira os espaços vazios.
-        tree_arr = [n for n in tree_arr if n != "-"]
 
         return tree_arr
 
@@ -284,7 +280,7 @@ def root_left_right(arr: List[float],
         
     root = index_arr[0]
     
-    #Se a árvore tiver elementos além da raiz,
+    #Se a array tiver elementos além da raiz,
     if len(index_arr) > 1:
         #Cria a sub-árvore da esquerda com seu primeiro elemento.
         left = [index_arr[1]]
