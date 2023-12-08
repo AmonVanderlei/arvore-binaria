@@ -150,7 +150,7 @@ class ArvoreBinaria:
         """
         root, left, right = self._root_left_right(arr, index_arr)
         
-        #Se não for uma lista vazia, transforma em uma árvore.
+        #Se tiver algum elemento, transforma em uma árvore.
         if left != []:
             left = array2tree(arr, left)
         if right != []:
@@ -197,10 +197,10 @@ class ArvoreBinaria:
         #Adiciona o valor na posição correta do array.
         tree_arr[i] = self.valor
         
-        #Se houver um objeto, chama o método to_array dele.
-        if self.esquerda != []:
+        #Se for uma Árvore Binária, chama o método to_array dela.
+        if isinstance(self.esquerda, ArvoreBinaria):
             self.esquerda.to_array(tree_arr, (2*i)+1)
-        if self.direita != []:
+        if isinstance(self.direita, ArvoreBinaria):
             self.direita.to_array(tree_arr, (2*i)+2)
 
         return tree_arr
@@ -331,7 +331,7 @@ def array2tree(arr: List[float],
     """
     root, left, right = root_left_right(arr, index_arr)
     
-    #Se não for uma lista vazia, transforma em uma árvore.
+    #Se tiver algum elemento, transforma em uma árvore.
     if left != []:
         left = array2tree(arr, left)
     if right != []:
